@@ -1,0 +1,62 @@
+<%= form_with(model: walk) do |form| %>
+  <% if walk.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(walk.errors.count, "error") %> prohibited this walk from being saved:</h2>
+
+      <ul>
+        <% walk.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :desc, style: "display: block" %>
+    <%= form.text_area :desc %>
+  </div>
+
+  <div>
+    <%= form.label :start_lat, style: "display: block" %>
+    <%= form.text_field :start_lat %>
+  </div>
+
+  <div>
+    <%= form.label :start_long, style: "display: block" %>
+    <%= form.text_field :start_long %>
+  </div>
+
+  <div>
+    <%= form.label :end_lat, style: "display: block" %>
+    <%= form.text_field :end_lat %>
+  </div>
+
+  <div>
+    <%= form.label :end_long, style: "display: block" %>
+    <%= form.text_field :end_long %>
+  </div>
+
+  <div>
+    <%= form.label :duration, style: "display: block" %>
+    <%= form.text_field :duration %>
+  </div>
+
+  <div>
+    <%= form.label :loop, style: "display: block" %>
+    <%= form.check_box :loop %>
+  </div>
+
+  <div>
+    <%= form.label :difficulty, style: "display: block" %>
+    <%= form.number_field :difficulty %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
