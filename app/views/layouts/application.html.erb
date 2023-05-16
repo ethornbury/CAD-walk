@@ -8,9 +8,13 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
 
-  <body>
+  <body >
+	<!-- call the partial with nav -->
+	<%= render 'layouts/nav' %>
 	<!-- devise required alerts -->
 	 <p class="notice"><%= notice %></p>
 	 <p class="alert"><%= alert %></p>
