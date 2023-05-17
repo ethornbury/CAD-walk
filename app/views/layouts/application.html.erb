@@ -16,12 +16,22 @@
 	<!-- call the partial with nav -->
 	<%= render 'layouts/nav' %>
 	<!-- devise required alerts -->
-	 <p class="notice"><%= notice %></p>
-	 <p class="alert"><%= alert %></p>
+	<div class="w3-row w3-center">
+		 <p class="notice"><%= notice %></p>
+		 <p class="alert"><%= alert %></p>
+	</div>
 	<% if user_signed_in? %>
 		<p><%= current_user.id %></p>
 	 <% end %>
-	 
-    <%= yield %>
+	 <div class="w3-col m1 w3-container">
+		<!-- need w3-container to get the empty col to display -->
+	</div>
+	<div class="w3-col m7 ">
+		<%= yield %>
+	</div>
+	<div class="w3-col m4 w3-grey w3-center">
+		<%= render 'layouts/sidebar' %>
+	</div>
+	
   </body>
 </html>
