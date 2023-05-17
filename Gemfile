@@ -4,6 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.2"
 
 gem 'devise'
+gem 'dotenv' #to hide variables, like API keys
+#gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.20.0'
+
 #gem 'bootstrap', '~> 4.3.1' #if I want bootstrap
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
