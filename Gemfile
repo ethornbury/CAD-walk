@@ -3,9 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+#my gems added
 gem 'devise'
 gem 'dotenv' #to hide variables, like API keys
-#gem 'httparty', '~> 0.13.7'
+#gem 'httparty', '~> 0.13.7' #changed to the version below and worked
 gem 'httparty', '~> 0.20.0'
 
 gem "font-awesome-sass", "~> 6.4.0"  #for icons

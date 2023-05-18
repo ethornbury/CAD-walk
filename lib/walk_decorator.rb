@@ -2,7 +2,7 @@ class BasicWalk
 	def initialize(difficulty, duration)
 		@difficulty = difficulty
 		@duration = duration
-		#@desc = desc	
+	
 	end
 	
 	def duration
@@ -12,10 +12,6 @@ class BasicWalk
 	def difficulty
 		return @difficulty
 	end
-	
-	#def desc
-	#	return @desc
-	#end
 
 end
 
@@ -33,6 +29,8 @@ class DecoratedWalk < BasicWalk
 	def tough
 		if duration > 5 and difficulty > 3
 			return " This is a tough walk."
+		else if duration < 3 and difficulty < 3
+			return " This is an easy walk."
 		end
 	end
 	
