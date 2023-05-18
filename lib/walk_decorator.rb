@@ -29,7 +29,7 @@ class DecoratedWalk < BasicWalk
 	def tough
 		if duration > 5 and difficulty > 3
 			return " This is a tough walk."
-		else if duration < 3 and difficulty < 3
+		elsif duration < 3 and difficulty < 3
 			return " This is an easy walk."
 		end
 	end
