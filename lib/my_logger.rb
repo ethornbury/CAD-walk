@@ -7,9 +7,11 @@ class MyLogger
     include Singleton
     def initialize
         @log = File.open("the_log.txt", "a")
+		#open the file and append data
     end
 
-    #though test runs neither works in app
+    #this will be added to the txt file
+	#(information) comes from the controller from the relevant method
     def logInformation(information)
         @log.puts("-----start-----")
         @log.puts(information)
