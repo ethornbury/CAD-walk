@@ -1,3 +1,6 @@
+require 'walk_decorator'
+#added for the decorator design pattern, file in lib folder
+
 class WalksController < ApplicationController
   before_action :set_walk, only: %i[ show edit update destroy ]
 
@@ -21,8 +24,22 @@ class WalksController < ApplicationController
 
   # POST /walks or /walks.json
   def create
-    @walk = Walk.new(walk_params)
+   #@walk = Walk.new(walk_params) #original statement
+	@walk = Walk.new() #new car obj
+	@walk.name = params[:walk][:name]
+	@walk.start_lat = params[:walk][:start_lat]
+	@walk.start_long = params[:walk][:start_long]
+	@walk.end_lat = params[:walk][:end_lat]
+	@walk.end_long = params[:walk][:end_long]
+	@walk.loop = params[:walk][:loop]
+	@walk.duration = params[:walk][:duration]
+	@walk.difficulty = params[:walk][:difficulty]
+	@walk.desc = params[:walk][:desc]
 
+	checkedWalk = BasicWalk.new(@walk.difficulty, @walk.duration)
+	checkedWalk = DecoratedWalk.new(checkedWalk)
+	@walk.desc = @walk.desc + " " +checkedWalk.tough
+	
     respond_to do |format|
       if @walk.save
         format.html { redirect_to walk_url(@walk), notice: "Walk was successfully created." }
@@ -68,3 +85,5 @@ class WalksController < ApplicationController
       params.require(:walk).permit(:name, :desc, :start_lat, :start_long, :end_lat, :end_long, :duration, :loop, :difficulty)
     end
 end
+
+
