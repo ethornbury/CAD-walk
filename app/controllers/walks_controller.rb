@@ -1,3 +1,9 @@
+#observer and singleton patterns
+#check the models folder>walk_observer.rb
+#check the walk controller
+#check the lib folder
+require 'my_logger'
+
 require 'walk_decorator'
 #added for the decorator design pattern, file in lib folder
 
@@ -48,7 +54,14 @@ class WalksController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @walk.errors, status: :unprocessable_entity }
       end
-    end
+	  
+	 # retrieve the instance/object of the MyLogger class
+    logger = MyLogger.instance
+    logger.logInformation("A new walk created: " + @walk.name) 
+	
+   end
+	
+	
   end
 
   # PATCH/PUT /walks/1 or /walks/1.json
@@ -67,7 +80,11 @@ class WalksController < ApplicationController
   # DELETE /walks/1 or /walks/1.json
   def destroy
     @walk.destroy
-
+	
+	#my addition - show car update info
+    logger = MyLogger.instance
+    logger.logInformation("A walk has been destroyed: " + @walk.desc)
+	
     respond_to do |format|
       format.html { redirect_to walks_url, notice: "Walk was successfully destroyed." }
       format.json { head :no_content }
