@@ -8,6 +8,9 @@ gem 'dotenv' #to hide variables, like API keys
 #gem 'httparty', '~> 0.13.7'
 gem 'httparty', '~> 0.20.0'
 
+gem "font-awesome-sass", "~> 6.4.0"  #for icons
+
+
 #gem 'bootstrap', '~> 4.3.1' #if I want bootstrap
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

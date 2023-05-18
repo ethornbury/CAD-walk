@@ -5,14 +5,24 @@ require 'dotenv/load'
 class PagesController < ApplicationController
   def home
 	@idiot = "hello" #testing passing a var!
-    response = HTTParty.get('https://uselessfacts.jsph.pl/random.json?language=en')
+    #response = HTTParty.get('https://uselessfacts.jsph.pl/random.json?language=en')
 
 	#response = HTTParty.get('https://api.quotable.io/quotes/random')
-    @random = JSON.parse(response.body)
-    @randomfact = @random['text']
-	#randomQ = @random['content']
-    #rsource = @random['source']
-	#@source = @random['author'] 
+	#response = HTTParty.get('https://api.quotable.io/quotes/random/?/id/content')
+	
+    #@random = JSON.parse(response.body)
+    #@randomfact = @random['text']
+	
+	#@random = JSON.parse(response.body)
+	#@randomfact = @random['content']
+	#@randomfact = @random
+	
+	response = HTTParty.get('https://v2.jokeapi.dev/joke/Programming?blacklistFlags=racist,sexist,explicit')
+	@random = JSON.parse(response.body)
+	#@randomfact = @random
+	@randomfact = @random['setup']
+	@randomfact2 = @random['delivery']
+ 
   end
 
   def about
