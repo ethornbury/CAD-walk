@@ -4,3 +4,9 @@ A new walk created: walk 7
 -----start-----
 A walk has been destroyed: walk 7.   This is a tough walk.
 -----end-----
+-----start-----
+A new walk created: walk 1
+-----end-----
+-----start-----
+A new walk created: walk 2
+-----end-----
