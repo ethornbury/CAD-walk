@@ -1,5 +1,5 @@
 #observer and singleton patterns
-#check the models folder>walk_observer.rb
+#check the folder for models > walk_observer.rb
 #check the walk controller
 #check the lib folder
 require 'my_logger'
@@ -31,7 +31,8 @@ class WalksController < ApplicationController
   # POST /walks or /walks.json
   def create
    #@walk = Walk.new(walk_params) #original statement
-	@walk = Walk.new() #new car obj
+   
+	@walk = Walk.new() #new walk obj
 	@walk.name = params[:walk][:name]
 	@walk.start_lat = params[:walk][:start_lat]
 	@walk.start_long = params[:walk][:start_long]
@@ -40,10 +41,13 @@ class WalksController < ApplicationController
 	@walk.loop = params[:walk][:loop]
 	@walk.duration = params[:walk][:duration]
 	@walk.difficulty = params[:walk][:difficulty]
-	@walk.desc = params[:walk][:desc]
+	@walk.desc = params[:walk][:desc] #take the entered desc and that will added to by decorator 
 
+	#create a BasicWalk with the required params
 	checkedWalk = BasicWalk.new(@walk.difficulty, @walk.duration)
+	#use that to Decorate the walk
 	checkedWalk = DecoratedWalk.new(checkedWalk)
+	#get the decorated desc and save it to the @desc param 
 	@walk.desc = @walk.desc + " " +checkedWalk.tough
 	
     respond_to do |format|
@@ -81,7 +85,7 @@ class WalksController < ApplicationController
   def destroy
     @walk.destroy
 	
-	#my addition - show car update info
+	#my addition - show update info
     logger = MyLogger.instance
     logger.logInformation("A walk has been destroyed: " + @walk.desc)
 	
