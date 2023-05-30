@@ -1,10 +1,19 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: %i[ show edit update destroy ]
+  #before_action :set_note, only: %i[ show edit update destroy ]
   before_action :authenticate_user! #devise 
-
+  #different user experiences
+  before_action :set_note, only: :show
+  before_action :verify_permission, only: :show
+  
   # GET /notes or /notes.json
   def index
-    @notes = Note.all
+    
+	if current_user.admin?
+		@notes = Note.all
+	else
+	  @notes = current_user.notes
+	end
+	
   end
 	
   def user_only
@@ -13,6 +22,8 @@ class NotesController < ApplicationController
   
   # GET /notes/1 or /notes/1.json
   def show
+    #addition
+	@note = Note.find params[:id]
   end
 
   # GET /notes/new
@@ -67,6 +78,10 @@ class NotesController < ApplicationController
     def set_note
       @note = Note.find(params[:id])
     end
+	
+	def verify_permission
+	  redirect_to notes_path if !user_signed_in? || @note.user != current_user
+	end
 
     # Only allow a list of trusted parameters through.
     def note_params
