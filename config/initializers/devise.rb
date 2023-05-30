@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# code fix below from here:  https://github.com/gorails-screencasts/hotwire-devise/tree/master
 class TurboFailureApp < Devise::FailureApp
   def respond
     if request_format == :turbo_stream

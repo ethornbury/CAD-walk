@@ -5,10 +5,14 @@
 <div id="walks">
   <% @walks.each do |walk| %>
     <%= render walk %>
+	<% if current_user %>
     <p>
       <%= link_to "Show this walk", walk %>
     </p>
+	<% end %>
   <% end %>
 </div>
 
-<%= link_to "New walk", new_walk_path %>
+<% if current_user %>
+  <%= link_to "New walk", new_walk_path %>
+<% end %>

@@ -8,7 +8,10 @@ require 'walk_decorator'
 #added for the decorator design pattern, file in lib folder
 
 class WalksController < ApplicationController
-  before_action :set_walk, only: %i[ show edit update destroy ]
+  #before_action :set_walk, only: %i[ show edit update destroy ] #original
+  #before_action :authenticate_user! #devise 
+  before_action :set_walk, only: %i[ show ] 
+  
 
   # GET /walks or /walks.json
   def index
