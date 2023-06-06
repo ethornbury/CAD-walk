@@ -9,9 +9,10 @@ require 'walk_decorator'
 
 class WalksController < ApplicationController
   #before_action :set_walk, only: %i[ show edit update destroy ] #original
-  #before_action :authenticate_user! #devise 
+  
   before_action :set_walk, only: %i[ show ]
-   
+  before_action :user_signed_in?, only: [:edit, :create, :update]
+  before_action :admin?, only: [:destroy]
 
   
 
@@ -88,17 +89,23 @@ class WalksController < ApplicationController
 
   # DELETE /walks/1 or /walks/1.json
   def destroy
-    
-    @walk.destroy
-	
-	#my addition - show update info
-    logger = MyLogger.instance
-    logger.logInformation("A walk has been destroyed: " + @walk.desc)
-	
-    respond_to do |format|
-      format.html { redirect_to walks_url, notice: "Walk was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    if admin?
+		@walk.destroy
+		#my addition - show update info
+		logger = MyLogger.instance
+		logger.logInformation("A walk has been destroyed: " + @walk.desc)
+
+		respond_to do |format|
+		  format.html { redirect_to walks_url, notice: "Walk was successfully destroyed." }
+		  format.json { head :no_content }
+		end
+	elsif
+		respond_to do |format|
+		  format.html { redirect_to walks_url, notice: "Walk not destroyed." }
+		  format.json { head :no_content }
+		end
+	end
+		
   end
 
   private

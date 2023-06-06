@@ -16,3 +16,6 @@ A walk has been destroyed: Walk 1.   This is a tough walk.
 -----start-----
 A new walk created: walk 1
 -----end-----
+-----start-----
+A new walk created: walk 2
+-----end-----

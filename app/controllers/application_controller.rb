@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base	
+  
   def admin?
-    admin
+    if current_user && current_user.admin?
+		return 	admin
+	end
   end
   
   #putting this method here makes it available across whole application
