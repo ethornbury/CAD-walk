@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   #get 'pages/other'
   get "/other" => "pages#other"
   
+  get "/profile" => "profiles#show"
+  
   
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
