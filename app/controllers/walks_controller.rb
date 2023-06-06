@@ -10,7 +10,9 @@ require 'walk_decorator'
 class WalksController < ApplicationController
   #before_action :set_walk, only: %i[ show edit update destroy ] #original
   #before_action :authenticate_user! #devise 
-  before_action :set_walk, only: %i[ show ] 
+  before_action :set_walk, only: %i[ show ]
+   
+
   
 
   # GET /walks or /walks.json
@@ -86,6 +88,7 @@ class WalksController < ApplicationController
 
   # DELETE /walks/1 or /walks/1.json
   def destroy
+    
     @walk.destroy
 	
 	#my addition - show update info
@@ -108,6 +111,10 @@ class WalksController < ApplicationController
     def walk_params
       params.require(:walk).permit(:name, :desc, :start_lat, :start_long, :end_lat, :end_long, :duration, :loop, :difficulty)
     end
+	
+	def verify_permission
+	  redirect_to notes_path if !user_signed_in? || @walk.user != current_user
+	end
 end
 
 

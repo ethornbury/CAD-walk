@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :notes
   
   # 1:1 relationship with profile to be implemented 
-  #has_one :profiles
+  has_one :profile
   
 end

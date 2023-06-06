@@ -2,8 +2,8 @@ class NotesController < ApplicationController
   #before_action :set_note, only: %i[ show edit update destroy ]
   before_action :authenticate_user! #devise 
   #different user experiences
-  before_action :set_note, only: :show 
-  before_action :verify_permission, only: :show
+  #before_action :set_note, only: :show 
+  before_action :verify_permission, only: :show  #demands that user logs in
   
   # GET /notes or /notes.json
   def index
@@ -11,7 +11,7 @@ class NotesController < ApplicationController
 	if current_user.admin? #check if admin user using own method from app controller
 		@notes = Note.all
 	else
-	  @notes = current_user.notes #restrixt to just the notes signed in user created
+	  @notes = current_user.notes #restrict to just the notes signed in user created
 	end
 	
   end
