@@ -13,8 +13,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   def new
     @profile = Profile.new
-    @profile.id = current_user.id
-	@profile.user_id = current_user.id
+    @profile.id = current_user.id #set the id from the user table id
+	@profile.user_id = current_user.id #set the user_id to be same in both tables
     #pass the above params over from user to profile table
   end
 

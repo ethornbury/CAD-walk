@@ -34,6 +34,10 @@
   <div>
     <%= form.label :user_id, style: "display: block" %>
     <%= form.text_field :user_id, :readonly => true %>
+	<!-- 
+	the field above picks up id from user table 
+	and is readonly so can't be changed by user, set by system 
+	-->
   </div>
 
   <div>

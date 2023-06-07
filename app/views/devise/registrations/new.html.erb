@@ -21,8 +21,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   
-	<br />
-  <%#= fields_for :profile do |form| %> <!-- note that this does not start with f.fields_for, my way allows for display toherwise hidden -->
+	<!-- 
+	note that this does not start with f.fields_for, 
+	my way allows for display otherwise hidden,
+	this was a problematic method, not saving to profile table 
+	and I didn't use but keeing this for reference	
+	-->
+  <%#= fields_for :profile do |form| %> 
 	 <div class="field">
 		<%#= form.label :firstname %>
 		<br />

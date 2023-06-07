@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   
   resources :profiles
-  #devise_for :users
+  #devise_for :users #can't have 2 sets of routes defined, see below
   resources :notes
   resources :walks
 
