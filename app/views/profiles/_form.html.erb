@@ -28,7 +28,8 @@
 
   <div>
     <%= form.label :country, style: "display: block" %>
-    <%= form.text_field :country %>
+	<%= form.select :country, ["Ireland", "UK", "France", "Spain", "Italy"] %>
+    <%#= form.text_field :country %>
   </div>
 
   <div>
