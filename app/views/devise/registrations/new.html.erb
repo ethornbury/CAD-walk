@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Sign up - where is my form</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -21,9 +21,27 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   
-  
-  
+	<br />
+  <%#= fields_for :profile do |form| %> <!-- note that this does not start with f.fields_for, my way allows for display toherwise hidden -->
+	 <div class="field">
+		<%#= form.label :firstname %>
+		<br />
+		<%#= form.text_field :firstname %>
+	 </div>
+	 <div class="field">
+		<%#= form.label :lastname %>
+		<br />
+		<%#= form.text_field :lastname %>
+     </div>
+	  
+	  <%#= profile_form.label :first_name %>
+      <%#= profile_form.text_field :first_name %>
 
+      <%#= profile_form.label :last_name %>
+      <%#= profile_form.text_field :last_name %>
+    <%# end %>
+  
+	<br />
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

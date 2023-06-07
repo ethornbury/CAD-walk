@@ -13,7 +13,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   def new
     @profile = Profile.new
-    @profile.user_id = current_user.id
+    @profile.id = current_user.id
+	@profile.user_id = current_user.id
     #pass the above params over from user to profile table
   end
 
@@ -24,6 +25,7 @@ class ProfilesController < ApplicationController
   # POST /profiles or /profiles.json
   def create
     @profile = Profile.new(profile_params)
+	@profile.id = current_user.id
 	@profile.user_id = current_user.id
 	
     respond_to do |format|
@@ -64,8 +66,8 @@ class ProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      #@profile = Profile.find(params[:id])
-	  @profile = Profile.find(params[:id] || current_user.profile_id)
+      @profile = Profile.find(params[:id])
+	  #@profile = Profile.find(params[:id] || current_user.profile_id)
     end
 
     # Only allow a list of trusted parameters through.

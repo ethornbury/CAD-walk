@@ -1,24 +1,23 @@
 Rails.application.routes.draw do
-  resources :profiles
-  devise_for :users
-  resources :notes
-  resources :walks
-  
   #get 'pages/home'
   root 'pages#home'
   
+  resources :profiles
+  #devise_for :users
+  resources :notes
+  resources :walks
+
   #get 'pages/about'
   get "/about" => "pages#about"
   
   #get 'pages/other'
   get "/other" => "pages#other"
-  
-  get "/profile" => "profiles#show"
-  
-  
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  #to pick up my controller with the after sign up route
+  devise_for :users, controllers: { registrations: "registrations" }
+  
+	
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"
 end
